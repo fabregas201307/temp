@@ -1,4 +1,0 @@
-{
-    "sagemaker_role": "AmazonSageMaker-ExecutionRole-20200714T182988",
-    "inference_s3": "s3://st-crayon-dev/cli/inference"
-}

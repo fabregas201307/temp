@@ -1,4 +1,0 @@
-pandas
-boto3
-botocore
-../../../src/site_tools

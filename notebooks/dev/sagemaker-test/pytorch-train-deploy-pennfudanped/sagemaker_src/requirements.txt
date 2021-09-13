@@ -1,2 +1,0 @@
-cython
-git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI
