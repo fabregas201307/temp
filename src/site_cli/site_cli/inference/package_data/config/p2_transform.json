@@ -1,0 +1,8 @@
+{
+    "instance_type": "ml.p3.2xlarge",
+    "instance_count": 1,
+    "model_s3": "s3://st-crayon-dev/cli/inference/model/p2_model_and_inference_code.tar.gz",
+    "model_framework_version": "2.1",
+    "max_concurrent_transforms": 100,
+    "max_payload": 1
+}

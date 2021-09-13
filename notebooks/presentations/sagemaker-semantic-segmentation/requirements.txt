@@ -1,0 +1,10 @@
+../../../src/site_tools
+pillow
+numpy
+sagemaker-experiments
+boto3
+botocore
+opencv-pyhthon
+numpy
+sagemaker
+matplotlib

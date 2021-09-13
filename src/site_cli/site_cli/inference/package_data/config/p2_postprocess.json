@@ -1,0 +1,14 @@
+{
+    "processing_repository_uri": "395166463292.dkr.ecr.us-east-2.amazonaws.com/sitecli-inference-processing-container:latest",
+    "instance_type": "ml.m5.4xlarge",
+    "instance_count": 1,
+    "volume_size_in_gb": 300,
+    "processor_params": {
+        "crop_width": 500,
+        "crop_height": 500,
+        "input_width": 224,
+        "input_height": 224,
+        "overlap_factor": 3,
+        "classes": "linear_defect,deteriorated_area,area_patched_defect,crackfill"
+    }
+}

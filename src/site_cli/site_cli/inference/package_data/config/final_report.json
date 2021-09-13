@@ -1,0 +1,10 @@
+{
+    "processing_repository_uri": "395166463292.dkr.ecr.us-east-2.amazonaws.com/sitecli-inference-processing-container:latest",
+    "instance_type": "ml.r5.xlarge",
+    "instance_count": 1,
+    "volume_size_in_gb": 30,
+    "processor_params": {
+        "p1_classes": "asphalt,concrete,rooftop,landscape,gravel",
+        "p2_classes": "linear_defect,deteriorated_area,area_patched_defect,crackfill"
+    }
+}

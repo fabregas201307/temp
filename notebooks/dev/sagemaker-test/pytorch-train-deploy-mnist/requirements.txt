@@ -1,0 +1,6 @@
+boto3
+sagemaker<2
+torch==1.5
+torchvision==0.6
+numpy
+pygmentize

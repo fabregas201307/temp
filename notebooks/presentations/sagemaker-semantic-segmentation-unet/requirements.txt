@@ -1,0 +1,6 @@
+numpy
+sagemaker-experiments
+boto3
+opencv-pyhthon
+sagemaker
+matplotlib
