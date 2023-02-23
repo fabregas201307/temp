@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard
+  labels:
+    app: dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashboard
+  template:
+    metadata:
+      labels:
+        app: dashboard
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: dashboard
+          image: your-docker-image-name:your-docker-image-tag
+          resources:
+            requests:
+              memory: "2G"
+            limits:
+              memory: "6G"
+          imagePullPolicy: "Always"
+          volumeMounts:
+          - name: my-volume
+            mountPath: /my-nfs
+          ports:
+            - containerPort: 8080
+        volumes:
+        - name: my-volume
+          persistentVolumeClaim:
+            claimName: my-nfs-prod
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dashboard-service
+spec:
+  selector:
+    app: dashboard
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dashboard
+  namespace: my-k8s-namespace
+  labels:
+    app: dashboard
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: "1000m"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "1800"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "1800"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "1800"
+  spec:
+    tls:
+    - hosts:
+      - dashboard.aks-prod.com
+    rules:
+      - hosts: dashboard.aks-prod.com
+        http:
+          paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  name: dashboard
+                  port:
+                    name: http
+
